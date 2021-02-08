@@ -15,6 +15,10 @@ class CountdownTimer {
   }
 
   formatTimeValue(time) {
+    if (time <= 0) {
+      time = 0;
+      clearInterval(this.intervalId);
+    }
     const days = this.pad(Math.floor(time / (1000 * 60 * 60 * 24)));
     const hours = this.pad(
       Math.floor((time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
@@ -42,7 +46,7 @@ class CountdownTimer {
 
 const currentTimer = new CountdownTimer({
   selector: '#timer-1',
-  targetDate: new Date('Jan 01, 2022'),
+  targetDate: new Date('Feb 08, 2021, 13:46:00'),
 });
 
 currentTimer.runTimer();
